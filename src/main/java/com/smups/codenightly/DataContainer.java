@@ -1,4 +1,4 @@
-package com.smups;
+package com.smups.codenightly;
 
 public class DataContainer {
     public static void say_hello() {
