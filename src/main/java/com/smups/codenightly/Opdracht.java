@@ -2,9 +2,9 @@ package com.smups.codenightly;
 
 import java.io.Serializable;
 
-
 /**
- * 
+ * Deze class dient als instructie voor de server. Een Opdracht class kan 
+ * mee worden gegeven met een Verwerkingsaanvraag @see #VerwerkingsAanvraag
  */
 public class Opdracht implements Serializable{
 

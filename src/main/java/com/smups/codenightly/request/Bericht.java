@@ -4,16 +4,19 @@ import java.io.Serializable;
 import java.util.UUID;
 
 /**
- * Deze class dient voornamelijk als abstacte parent van aanvragen met
+ * Deze class dient voornamelijk als abstacte parent van berichten met
  * data velden.
  * 
- * De class bevat als public value de UUID van de aanvraag, en als protected
+ * De class bevat als public value de UUID van het Bericht, en als protected
  * values de gebruiker UUID's van de ontvanger en de verzender.
  * 
  * @author Raúl
  */
-public abstract class Aanvraag implements Serializable{
+public abstract class Bericht implements Serializable{
     public static final long serialVersionUID = 1L;
+
+    //Is dit een verzoek of een antwoord
+    public final boolean VERZOEK;
 
     //ID van de request.
     public final UUID AANVRAAG_ID;
@@ -23,21 +26,23 @@ public abstract class Aanvraag implements Serializable{
     protected final UUID verzender;
 
     /**
-     * Eenvoudige constructor die een aanvraag met een willekeurig ID maakt voor
+     * Eenvoudige constructor die een Bericht met een willekeurig ID maakt voor
      * gegeven ontvanger en verzender.
      * 
-     * @param ontvanger is de UUID van de gebruiker voor wien deze aanvraag
+     * @param ontvanger is de UUID van de gebruiker voor wien dit Bericht
      * bedoeld is.
-     * @param verzender is de UUID van de gebruiker die deze aanvraag verzonden
-     * en/of aangemaakt heeft
+     * @param verzender is de UUID van de gebruiker die dit Bericht verzonden
+     * en/of aangemaakt heeft.
+     * @param verzoek geeft aan of dit bericht een verzoek of een antwoord is.
      * 
      * @see #Aanvraag(UUID, UUID, UUID)
      */
-    public Aanvraag(UUID ontvanger, UUID verzender) {
+    public Bericht(UUID ontvanger, UUID verzender, boolean verzoek) {
 
         //Kies willekeurig id voor de request
         this.AANVRAAG_ID = UUID.randomUUID();
 
+        this.VERZOEK = verzoek;
         this.ontvanger = ontvanger;
         this.verzender = verzender;
     }
@@ -45,20 +50,22 @@ public abstract class Aanvraag implements Serializable{
     /**
      * Constructor voor een aanvraag instance met een van te voren vastgelegd
      * UUID. Deze constructor wordt gebruikt in de kopie() functie.
-     * @see #kopie(Aanvraag)
+     * @see #kopie(Bericht)
      * 
-     * @param id UUID wat gebruikt moet worden als UUID van de aanvraag
-     * @param ontvanger is de UUID van de gebruiker voor wien deze aanvraag
+     * @param id UUID wat gebruikt moet worden als UUID van het Bericht
+     * @param ontvanger is de UUID van de gebruiker voor wien dit Bericht
      * bedoeld is.
-     * @param verzender is de UUID van de gebruiker die deze aanvraag verzonden
+     * @param verzender is de UUID van de gebruiker die dit Bericht verzonden
      * en/of aangemaakt heeft
+     * @param verzoek geeft aan of dit bericht een verzoek of een antwoord is.
      * 
-     * @see #Aanvraag(UUID, UUID)
+     * @see #Bericht(UUID, UUID)
      */
-    public Aanvraag(UUID id, UUID ontvanger, UUID verzender) {
+    public Bericht(UUID id, UUID ontvanger, UUID verzender, boolean verzoek) {
         this.AANVRAAG_ID = id;
         this.ontvanger = ontvanger;
         this.verzender = verzender;
+        this.VERZOEK = verzoek;
     }
 
     /**
@@ -72,11 +79,12 @@ public abstract class Aanvraag implements Serializable{
      * @param that aanvraag die gekopiëerd moet worden
      * @return kopie van aanvraag that, met parent implementatie.
      */
-    public Aanvraag kopie(Aanvraag that) {
-        return new Aanvraag(
+    public Bericht kopie(Bericht that) {
+        return new Bericht(
             that.AANVRAAG_ID,
             that.ontvanger,
-            that.verzender
+            that.verzender,
+            that.VERZOEK
         )
         { //Implementatie van abstracte velden is vereist
             @Override
@@ -91,8 +99,8 @@ public abstract class Aanvraag implements Serializable{
             public int hashCode(){ return parent_hash(); }
             @Override
             public boolean equals(Object o) {
-                if (!(o instanceof Aanvraag)) return false;
-                else return parent_fields_eql((Aanvraag) o);
+                if (!(o instanceof Bericht)) return false;
+                else return parent_fields_eql((Bericht) o);
             }
         };
     }
@@ -131,7 +139,7 @@ public abstract class Aanvraag implements Serializable{
      * @return true als de aanvraag hetzelfde is als de caller, en false indien
      * ze anders zijn
      */
-    protected boolean parent_fields_eql(Aanvraag that) {
+    protected boolean parent_fields_eql(Bericht that) {
         return that.AANVRAAG_ID.equals(this.AANVRAAG_ID) &&
         that.ontvanger.equals(this.ontvanger) &&
         that.verzender.equals(this.verzender);

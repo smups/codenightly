@@ -2,7 +2,7 @@ package com.smups.codenightly.request;
 
 import java.util.UUID;
 
-public class DataAanvraag extends Aanvraag{
+public class DataAanvraag extends Verzoek{
 
     public DataAanvraag(UUID ontvanger, UUID verzender) {
         super(ontvanger, verzender);
