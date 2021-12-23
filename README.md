@@ -9,7 +9,7 @@ Wij gebruiken de API als laag tussen een *server* en een *client* applicatie. De
 
 In dit project beschouwen we een structuur met 3 onderdelen:
 1. Codenightly (de API)
-2. Codenight (de Server)
+2. Codedusk (de Server)
 3. Codedawn (de Client)
 
 Het merendeel van codenightly is al geschreven. Vandaag (en misschien in de loop van de week) schrijven we dan de Server en Client implementaties.
