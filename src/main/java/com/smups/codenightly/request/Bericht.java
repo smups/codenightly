@@ -35,7 +35,7 @@ public abstract class Bericht implements Serializable{
      * en/of aangemaakt heeft.
      * @param verzoek geeft aan of dit bericht een verzoek of een antwoord is.
      * 
-     * @see #Aanvraag(UUID, UUID, UUID)
+     * @see Aanvraag(UUID, UUID, UUID)
      */
     public Bericht(UUID ontvanger, UUID verzender, boolean verzoek) {
 
@@ -50,7 +50,7 @@ public abstract class Bericht implements Serializable{
     /**
      * Constructor voor een aanvraag instance met een van te voren vastgelegd
      * UUID. Deze constructor wordt gebruikt in de kopie() functie.
-     * @see #kopie(Bericht)
+     * {@link #kopie(Bericht)}
      * 
      * @param id UUID wat gebruikt moet worden als UUID van het Bericht
      * @param ontvanger is de UUID van de gebruiker voor wien dit Bericht
@@ -59,7 +59,7 @@ public abstract class Bericht implements Serializable{
      * en/of aangemaakt heeft
      * @param verzoek geeft aan of dit bericht een verzoek of een antwoord is.
      * 
-     * @see #Bericht(UUID, UUID)
+     * @see Bericht(UUID, UUID)
      */
     public Bericht(UUID id, UUID ontvanger, UUID verzender, boolean verzoek) {
         this.AANVRAAG_ID = id;
@@ -70,7 +70,7 @@ public abstract class Bericht implements Serializable{
 
     /**
      * Levert een kopie van de gespecificeerde aanvraag. Maakt gebruik van de
-     * 3-UUID constructor. @see #Aanvraag(UUID, UUID, UUID)
+     * 3-UUID constructor. {@link #Aanvraag(UUID, UUID, UUID)}
      * 
      * <B>Gebruik deze functie niet direct!</B> De kopie die geleverd wordt door
      * deze functie bevat implementatie details. Bij voorkeur worden deze door

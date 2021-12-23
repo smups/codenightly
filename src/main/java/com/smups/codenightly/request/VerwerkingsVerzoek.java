@@ -83,7 +83,7 @@ public class VerwerkingsVerzoek extends Verzoek{
      * 
      * @return Opdracht van deze VerwerkingsVerzoek
      * 
-     * @see #Opdracht.
+     * @see com.smups.Opdracht
      */
     public Opdracht getOpdracht() { return this.OPDRACHT; }
 
@@ -92,7 +92,7 @@ public class VerwerkingsVerzoek extends Verzoek{
      * 
      * @return Data die verwerkt moet worden voor deze VerwerkingsVerzoek.
      * 
-     * @see #DataContainer.
+     * @see com.smups.DataContainer
      */
     public DataContainer getData() { return this.VERZOEK_DATA; }
     

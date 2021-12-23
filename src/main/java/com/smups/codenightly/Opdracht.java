@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * Deze class dient als instructie voor de server. Een Opdracht class kan 
- * mee worden gegeven met een Verwerkingsaanvraag @see #VerwerkingsAanvraag
+ * mee worden gegeven met een Verwerkingsaanvraag. {@link com.smups.VerwerkingsAanvraag}
  */
 public class Opdracht implements Serializable{
 

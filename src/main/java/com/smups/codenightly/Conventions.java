@@ -7,7 +7,6 @@ public interface Conventions {
      * @author Raúl
      */
 
-
     /**
      * Port die gebruikt wordt voor communicatie tussen de server en de clients
      */
