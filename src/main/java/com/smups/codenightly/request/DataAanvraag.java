@@ -1,10 +1,10 @@
 package com.smups.codenightly.request;
 
-import java.util.UUID;
+import com.smups.codenightly.CodeNightlyID;
 
 public class DataAanvraag extends Verzoek{
 
-    public DataAanvraag(UUID ontvanger, UUID verzender) {
+    public DataAanvraag(CodeNightlyID ontvanger, CodeNightlyID verzender) {
         super(ontvanger, verzender);
         //TODO Auto-generated constructor stub
     }

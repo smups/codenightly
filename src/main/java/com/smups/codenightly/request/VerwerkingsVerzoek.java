@@ -1,7 +1,6 @@
 package com.smups.codenightly.request;
 
-import java.util.UUID;
-
+import com.smups.codenightly.CodeNightlyID;
 import com.smups.codenightly.DataContainer;
 import com.smups.codenightly.Opdracht;
 
@@ -35,7 +34,7 @@ public class VerwerkingsVerzoek extends Verzoek{
      * @param data data die verwerkt moet worden door de server.
      * @param opdracht opdracht ter verwerking der data voor de server.
      */
-    public VerwerkingsVerzoek(UUID ontvanger, UUID verzender,
+    public VerwerkingsVerzoek(CodeNightlyID ontvanger, CodeNightlyID verzender,
         DataContainer data, Opdracht opdracht) {
         super(ontvanger, verzender);
         

@@ -3,12 +3,14 @@ package com.smups.codenightly.request;
 import java.io.Serializable;
 import java.util.UUID;
 
+import com.smups.codenightly.CodeNightlyID;
+
 /**
  * Deze class dient voornamelijk als abstacte parent van berichten met
  * data velden.
  * 
- * De class bevat als public value de UUID van het Bericht, en als protected
- * values de gebruiker UUID's van de ontvanger en de verzender.
+ * De class bevat als public value de CodeNightlyID van het Bericht, en als protected
+ * values de gebruiker CodeNightlyID's van de ontvanger en de verzender.
  * 
  * @author Raúl
  */
@@ -22,22 +24,22 @@ public abstract class Bericht implements Serializable{
     public final UUID AANVRAAG_ID;
 
     //ID's van verzenders en ontvangers
-    protected final UUID ontvanger;
-    protected final UUID verzender;
+    protected final CodeNightlyID ontvanger;
+    protected final CodeNightlyID verzender;
 
     /**
      * Eenvoudige constructor die een Bericht met een willekeurig ID maakt voor
      * gegeven ontvanger en verzender.
      * 
-     * @param ontvanger is de UUID van de gebruiker voor wien dit Bericht
+     * @param ontvanger is de CodeNightlyID van de gebruiker voor wien dit Bericht
      * bedoeld is.
-     * @param verzender is de UUID van de gebruiker die dit Bericht verzonden
+     * @param verzender is de CodeNightlyID van de gebruiker die dit Bericht verzonden
      * en/of aangemaakt heeft.
      * @param verzoek geeft aan of dit bericht een verzoek of een antwoord is.
      * 
-     * @see Aanvraag(UUID, UUID, UUID)
+     * @see Aanvraag(CodeNightlyID, CodeNightlyID, CodeNightlyID)
      */
-    public Bericht(UUID ontvanger, UUID verzender, boolean verzoek) {
+    public Bericht(CodeNightlyID ontvanger, CodeNightlyID verzender, boolean verzoek) {
 
         //Kies willekeurig id voor de request
         this.AANVRAAG_ID = UUID.randomUUID();
@@ -49,19 +51,20 @@ public abstract class Bericht implements Serializable{
 
     /**
      * Constructor voor een aanvraag instance met een van te voren vastgelegd
-     * UUID. Deze constructor wordt gebruikt in de kopie() functie.
+     * CodeNightlyID. Deze constructor wordt gebruikt in de kopie() functie.
      * {@link #kopie(Bericht)}
      * 
-     * @param id UUID wat gebruikt moet worden als UUID van het Bericht
-     * @param ontvanger is de UUID van de gebruiker voor wien dit Bericht
+     * @param id CodeNightlyID wat gebruikt moet worden als CodeNightlyID van het Bericht
+     * @param ontvanger is de CodeNightlyID van de gebruiker voor wien dit Bericht
      * bedoeld is.
-     * @param verzender is de UUID van de gebruiker die dit Bericht verzonden
+     * @param verzender is de CodeNightlyID van de gebruiker die dit Bericht verzonden
      * en/of aangemaakt heeft
      * @param verzoek geeft aan of dit bericht een verzoek of een antwoord is.
      * 
-     * @see Bericht(UUID, UUID)
+     * @see Bericht(CodeNightlyID, CodeNightlyID)
      */
-    public Bericht(UUID id, UUID ontvanger, UUID verzender, boolean verzoek) {
+    public Bericht(UUID id, CodeNightlyID ontvanger,
+        CodeNightlyID verzender, boolean verzoek) {
         this.AANVRAAG_ID = id;
         this.ontvanger = ontvanger;
         this.verzender = verzender;
@@ -70,7 +73,7 @@ public abstract class Bericht implements Serializable{
 
     /**
      * Levert een kopie van de gespecificeerde aanvraag. Maakt gebruik van de
-     * 3-UUID constructor. {@link #Aanvraag(UUID, UUID, UUID)}
+     * 3-CodeNightlyID constructor. {@link #Aanvraag(CodeNightlyID, CodeNightlyID, CodeNightlyID)}
      * 
      * <B>Gebruik deze functie niet direct!</B> De kopie die geleverd wordt door
      * deze functie bevat implementatie details. Bij voorkeur worden deze door
@@ -106,9 +109,9 @@ public abstract class Bericht implements Serializable{
     }
 
     /**
-     * Hulpfunctie om UUID's van de verzender en de ontvanger te formatten.
+     * Hulpfunctie om CodeNightlyID's van de verzender en de ontvanger te formatten.
      * 
-     * @return geformatte String van 2 regels met UUID's van de verzender en de
+     * @return geformatte String van 2 regels met CodeNightlyID's van de verzender en de
      * ontvanger.
      */
     protected String parent_to_string() {

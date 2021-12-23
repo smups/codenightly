@@ -1,6 +1,6 @@
 package com.smups.codenightly.request;
 
-import java.util.UUID;
+import com.smups.codenightly.CodeNightlyID;
 
 /**
  * Deze class is een kind van de {@link com.smups.request.Bericht}
@@ -8,7 +8,7 @@ import java.util.UUID;
  */
 public abstract class Antwoord extends Bericht{
 
-    public Antwoord(UUID ontvanger, UUID verzender) {
+    public Antwoord(CodeNightlyID ontvanger, CodeNightlyID verzender) {
         super(ontvanger, verzender, false); //false want dit is een antwoord
     }
     
